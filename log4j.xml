@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<log4j:configuration>
+	<appender name="RFA" class="org.apache.log4j.RollingFileAppender"> 
+	    <param name="file" value="../logs/npulseLicensing.log"/>
+	    <param name="MaxFileSize" value="1000KB"/>
+	    <param name="MaxBackupIndex" value="100"/>
+	    <param name="threshold" value="debug"/>
+		<layout class="org.apache.log4j.PatternLayout">
+		   <param name="conversionPattern" value="%d{ISO8601} %-5p %c{1} - %m%n"/>
+		</layout>
+	</appender>
+  	<appender name="CONSOLE" class="org.apache.log4j.ConsoleAppender">
+	   <param name="threshold" value="debug"/>
+	   <param name="Target" value="System.out" />
+	   <layout class="org.apache.log4j.PatternLayout">
+	      <param name="conversionPattern" value="%d{ISO8601} %-5p %c{1} - %m%n"/>
+	   </layout>
+	</appender>
+	
+	<logger name="com.bentley">
+	    <level value="debug"/>
+	</logger>
+	<root>
+		<priority value ="debug" />
+		<appender-ref ref="RFA"/>
+		<appender-ref ref="CONSOLE"/>
+	</root>
+</log4j:configuration>
